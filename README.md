@@ -1,71 +1,91 @@
-# focus-mode README
+# Focus Mode
 
-This is the README for your extension "focus-mode". After writing up a brief description, we recommend including the following sections.
+A VS Code extension for students and developers who want to practice coding without AI assistance — and switch back to full autocomplete with a single keystroke.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+### One-click mode toggle
 
-For example if there is an image subfolder under your extension project workspace:
+Click the status bar item (bottom-left) or use the keyboard shortcut to switch between:
 
-\!\[feature X\]\(images/feature-x.png\)
+| Mode | Status bar | Autocomplete |
+|------|-----------|--------------|
+| 🎓 Learning Mode | `🎓 Learning Mode` | Disabled |
+| ⚡ Productivity Mode | `⚡ Productivity Mode` | Enabled |
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### Keyboard shortcut
 
-## Requirements
+| Platform | Shortcut |
+|----------|----------|
+| macOS | `Cmd+Shift+F` |
+| Windows / Linux | `Ctrl+Shift+F` |
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### Per-language overrides
+
+Set a different mode for each programming language independently. Open the Command Palette and run:
+
+> **Focus Mode: Set Mode for Current Language**
+
+For example: use Learning Mode for Python while keeping Productivity Mode for HTML.
+
+### AI plugin support
+
+Focus Mode automatically detects and controls the following plugins if installed:
+
+- **GitHub Copilot** — `github.copilot.enable`
+- **Codeium** — `codeium.enableConfig`
+- **Tabnine** — `tabnine.experimentalAutoImports`
+
+### Settings controlled in Learning Mode
+
+```
+editor.quickSuggestions
+editor.suggestOnTriggerCharacters
+editor.inlineSuggest.enabled
+editor.parameterHints.enabled
+```
+
+### State persistence
+
+Your last mode is saved and restored automatically when VS Code restarts.
+
+### Internationalization
+
+The UI automatically switches language based on your VS Code display language:
+
+| Locale | Learning Mode | Productivity Mode |
+|--------|--------------|-------------------|
+| `en` | 🎓 Learning Mode | ⚡ Productivity Mode |
+| `zh-cn` | 🎓 学习模式 | ⚡ 效率模式 |
+| `ja` | 🎓 学習モード | ⚡ 生産性モード |
+| `ko` | 🎓 학습 모드 | ⚡ 생산성 모드 |
+| `fr` | 🎓 Mode Apprentissage | ⚡ Mode Productivité |
+| `de` | 🎓 Lernmodus | ⚡ Produktivitätsmodus |
+| `es` | 🎓 Modo Aprendizaje | ⚡ Modo Productividad |
+| `pt` | 🎓 Modo Aprendizado | ⚡ Modo Produtividade |
+| `ru` | 🎓 Режим обучения | ⚡ Режим продуктивности |
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `focusMode.defaultLanguageModes` | `object` | `{}` | Default mode per language. Example: `{ "python": "learning", "html": "productivity" }` |
 
-For example:
+## Commands
 
-This extension contributes the following settings:
+| Command | Description |
+|---------|-------------|
+| `Focus Mode: Toggle Global Mode` | Toggle between Learning and Productivity mode globally |
+| `Focus Mode: Set Mode for Current Language` | Set or clear a per-language mode override |
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## Who is this for?
 
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- Students practicing algorithms or coding exercises
+- Developers who want distraction-free typing sessions
+- Anyone who wants to quickly mute AI suggestions without digging through settings
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Initial release. See [CHANGELOG](CHANGELOG.md) for full details.
