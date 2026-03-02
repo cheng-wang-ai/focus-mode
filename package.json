@@ -1,0 +1,67 @@
+{
+  "name": "focus-mode",
+  "displayName": "Focus Mode",
+  "description": "一键切换学习模式（关闭补全）和效率模式（开启补全）",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "focus-mode.toggleMode",
+        "title": "Focus Mode: 切换全局模式（学习 / 效率）"
+      },
+      {
+        "command": "focus-mode.setLanguageMode",
+        "title": "Focus Mode: 设置当前语言的模式"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "focus-mode.toggleMode",
+        "key": "ctrl+shift+f",
+        "mac": "cmd+shift+f"
+      }
+    ],
+    "configuration": {
+      "title": "Focus Mode",
+      "properties": {
+        "focusMode.defaultLanguageModes": {
+          "type": "object",
+          "default": {},
+          "description": "每种语言的默认模式。例如：{ \"python\": \"learning\", \"html\": \"productivity\" }",
+          "additionalProperties": {
+            "type": "string",
+            "enum": ["learning", "productivity"]
+          }
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.109.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.56.1",
+    "eslint": "^9.39.3",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
