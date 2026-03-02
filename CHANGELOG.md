@@ -6,6 +6,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.0.2] - 2026-03-02
+
+### Added
+- Toast notification in the bottom-right corner when the user presses `Ctrl+Space` or `Tab` (when a suggestion is visible) while in Learning Mode: "🎓 Learning Mode is active — autocomplete is disabled"
+- Notification auto-dismisses with a 2-second debounce to prevent spam
+- Toast message localized across all 9 supported languages
+
 ## [0.0.1] - 2026-03-02
 
 ### Added

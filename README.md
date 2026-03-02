@@ -15,6 +15,14 @@ Click the status bar item (bottom-left) or use the keyboard shortcut to switch b
 | 🎓 Learning Mode | `🎓 Learning Mode` | Disabled |
 | ⚡ Productivity Mode | `⚡ Productivity Mode` | Enabled |
 
+### Autocomplete blocked notification
+
+When in Learning Mode, pressing `Ctrl+Space` (or `Tab` while a suggestion is visible) shows a toast in the bottom-right corner instead of opening autocomplete:
+
+> 🎓 Learning Mode is active — autocomplete is disabled
+
+The notification auto-dismisses and is rate-limited to once every 2 seconds. The message is localized for all supported languages.
+
 ### Keyboard shortcut
 
 | Platform | Shortcut |
@@ -87,6 +95,10 @@ The UI automatically switches language based on your VS Code display language:
 - Anyone who wants to quickly mute AI suggestions without digging through settings
 
 ## Release Notes
+
+### 0.0.2
+
+- Toast notification when autocomplete shortcut is pressed in Learning Mode
 
 ### 0.0.1
 
