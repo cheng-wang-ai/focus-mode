@@ -1,0 +1,6 @@
+{
+  "extension.description": "Переключение одним кликом между режимом обучения (без автодополнения) и режимом продуктивности (с автодополнением)",
+  "command.toggleMode.title": "Focus Mode: Переключить глобальный режим (Обучение / Продуктивность)",
+  "command.setLanguageMode.title": "Focus Mode: Установить режим для текущего языка",
+  "config.defaultLanguageModes.description": "Режим по умолчанию для каждого языка. Пример: { \"python\": \"learning\", \"html\": \"productivity\" }"
+}

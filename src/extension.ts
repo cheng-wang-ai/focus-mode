@@ -1,22 +1,24 @@
 import * as vscode from 'vscode';
 import { ModeManager, Mode } from './modeManager';
 import { detectInstalledPlugins } from './pluginDetector';
+import { getStrings, fmt } from './i18n';
 
 let statusBarItem: vscode.StatusBarItem;
 let modeManager: ModeManager;
 
 function updateStatusBar(): void {
+    const s = getStrings();
     const activeEditor = vscode.window.activeTextEditor;
     const languageId = activeEditor?.document.languageId;
     const effectiveMode = modeManager.getEffectiveMode(languageId);
     const hasOverride = !!languageId && modeManager.getLanguageModes()[languageId] !== undefined;
 
     if (effectiveMode === 'learning') {
-        statusBarItem.text = hasOverride ? `🎓 学习 [${languageId}]` : '🎓 学习模式';
-        statusBarItem.tooltip = '学习模式：已关闭自动补全\n点击切换全局模式';
+        statusBarItem.text = hasOverride ? `${s.learningShort} [${languageId}]` : s.learningLabel;
+        statusBarItem.tooltip = s.learningTooltip;
     } else {
-        statusBarItem.text = hasOverride ? `⚡ 效率 [${languageId}]` : '⚡ 效率模式';
-        statusBarItem.tooltip = '效率模式：已开启自动补全\n点击切换全局模式';
+        statusBarItem.text = hasOverride ? `${s.productivityShort} [${languageId}]` : s.productivityLabel;
+        statusBarItem.tooltip = s.productivityTooltip;
     }
 }
 
@@ -35,19 +37,21 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     // Toggle global mode command (also bound to keyboard shortcut).
     context.subscriptions.push(
         vscode.commands.registerCommand('focus-mode.toggleMode', async () => {
+            const s = getStrings();
             const newMode = await modeManager.toggleGlobalMode();
             updateStatusBar();
-            const label = newMode === 'learning' ? '🎓 学习模式' : '⚡ 效率模式';
-            vscode.window.showInformationMessage(`已切换到${label}（全局）`);
+            const label = newMode === 'learning' ? s.learningLabel : s.productivityLabel;
+            vscode.window.showInformationMessage(fmt(s.switchedGlobal, label));
         })
     );
 
     // Set per-language mode for the currently open file.
     context.subscriptions.push(
         vscode.commands.registerCommand('focus-mode.setLanguageMode', async () => {
+            const s = getStrings();
             const editor = vscode.window.activeTextEditor;
             if (!editor) {
-                vscode.window.showWarningMessage('Focus Mode：请先打开一个文件');
+                vscode.window.showWarningMessage(s.noFileOpen);
                 return;
             }
             const languageId = editor.document.languageId;
@@ -57,38 +61,38 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
             type PickItem = vscode.QuickPickItem & { value: Mode | 'global' };
             const items: PickItem[] = [
                 {
-                    label: '🎓 学习模式',
-                    description: '关闭此语言的自动补全',
+                    label: s.learningPickLabel,
+                    description: s.learningPickDesc,
                     value: 'learning',
                     picked: currentMode === 'learning',
                 },
                 {
-                    label: '⚡ 效率模式',
-                    description: '开启此语言的自动补全',
+                    label: s.productivityPickLabel,
+                    description: s.productivityPickDesc,
                     value: 'productivity',
                     picked: currentMode === 'productivity',
                 },
                 {
-                    label: '↩ 跟随全局模式',
-                    description: hasOverride ? '移除此语言的单独设置' : '（当前已跟随全局）',
+                    label: s.followGlobalLabel,
+                    description: hasOverride ? s.followGlobalDescYes : s.followGlobalDescNo,
                     value: 'global',
                 },
             ];
 
             const choice = await vscode.window.showQuickPick(items, {
-                title: `设置 "${languageId}" 的模式`,
-                placeHolder: '选择此语言的补全模式',
+                title: fmt(s.pickTitle, languageId),
+                placeHolder: s.pickPlaceholder,
             });
 
             if (!choice) { return; }
 
             if (choice.value === 'global') {
                 await modeManager.resetLanguageMode(languageId);
-                vscode.window.showInformationMessage(`${languageId}：已恢复为全局模式`);
+                vscode.window.showInformationMessage(fmt(s.resetDone, languageId));
             } else {
                 await modeManager.setLanguageMode(languageId, choice.value);
-                const label = choice.value === 'learning' ? '🎓 学习模式' : '⚡ 效率模式';
-                vscode.window.showInformationMessage(`${languageId}：已设置为${label}`);
+                const label = choice.value === 'learning' ? s.learningLabel : s.productivityLabel;
+                vscode.window.showInformationMessage(fmt(s.setDone, languageId, label));
             }
 
             updateStatusBar();

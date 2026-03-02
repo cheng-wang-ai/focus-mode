@@ -1,0 +1,6 @@
+{
+  "extension.description": "一键切换学习模式（关闭补全）和效率模式（开启补全）",
+  "command.toggleMode.title": "Focus Mode: 切换全局模式（学习 / 效率）",
+  "command.setLanguageMode.title": "Focus Mode: 设置当前语言的模式",
+  "config.defaultLanguageModes.description": "每种语言的默认模式。例如：{ \"python\": \"learning\", \"html\": \"productivity\" }"
+}

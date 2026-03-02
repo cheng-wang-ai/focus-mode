@@ -1,0 +1,6 @@
+{
+  "extension.description": "학습 모드(자동 완성 끄기)와 생산성 모드(자동 완성 켜기)를 원클릭으로 전환",
+  "command.toggleMode.title": "Focus Mode: 전역 모드 전환 (학습 / 생산성)",
+  "command.setLanguageMode.title": "Focus Mode: 현재 언어의 모드 설정",
+  "config.defaultLanguageModes.description": "언어별 기본 모드. 예: { \"python\": \"learning\", \"html\": \"productivity\" }"
+}

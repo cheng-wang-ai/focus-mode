@@ -1,0 +1,6 @@
+{
+  "extension.description": "Alterne com um clique entre o Modo Aprendizado (sem preenchimento automático) e o Modo Produtividade (com preenchimento automático)",
+  "command.toggleMode.title": "Focus Mode: Alternar modo global (Aprendizado / Produtividade)",
+  "command.setLanguageMode.title": "Focus Mode: Definir modo para o idioma atual",
+  "config.defaultLanguageModes.description": "Modo padrão por idioma. Exemplo: { \"python\": \"learning\", \"html\": \"productivity\" }"
+}

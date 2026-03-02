@@ -1,0 +1,6 @@
+{
+  "extension.description": "Basculez en un clic entre le Mode Apprentissage (saisie désactivée) et le Mode Productivité (saisie activée)",
+  "command.toggleMode.title": "Focus Mode : Basculer le mode global (Apprentissage / Productivité)",
+  "command.setLanguageMode.title": "Focus Mode : Définir le mode pour le langage actuel",
+  "config.defaultLanguageModes.description": "Mode par défaut par langage. Exemple : { \"python\": \"learning\", \"html\": \"productivity\" }"
+}

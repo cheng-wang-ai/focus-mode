@@ -1,0 +1,6 @@
+{
+  "extension.description": "One-click toggle between Learning Mode (no autocomplete) and Productivity Mode (full autocomplete)",
+  "command.toggleMode.title": "Focus Mode: Toggle Global Mode (Learning / Productivity)",
+  "command.setLanguageMode.title": "Focus Mode: Set Mode for Current Language",
+  "config.defaultLanguageModes.description": "Default mode per language. Example: { \"python\": \"learning\", \"html\": \"productivity\" }"
+}

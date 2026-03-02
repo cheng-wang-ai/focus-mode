@@ -1,0 +1,6 @@
+{
+  "extension.description": "ワンクリックで学習モード（自動補完オフ）と生産性モード（自動補完オン）を切り替え",
+  "command.toggleMode.title": "Focus Mode: グローバルモードを切替（学習 / 生産性）",
+  "command.setLanguageMode.title": "Focus Mode: 現在の言語のモードを設定",
+  "config.defaultLanguageModes.description": "言語ごとのデフォルトモード。例：{ \"python\": \"learning\", \"html\": \"productivity\" }"
+}

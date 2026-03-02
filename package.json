@@ -1,7 +1,7 @@
 {
   "name": "focus-mode",
   "displayName": "Focus Mode",
-  "description": "一键切换学习模式（关闭补全）和效率模式（开启补全）",
+  "description": "%extension.description%",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.109.0"
@@ -17,11 +17,11 @@
     "commands": [
       {
         "command": "focus-mode.toggleMode",
-        "title": "Focus Mode: 切换全局模式（学习 / 效率）"
+        "title": "%command.toggleMode.title%"
       },
       {
         "command": "focus-mode.setLanguageMode",
-        "title": "Focus Mode: 设置当前语言的模式"
+        "title": "%command.setLanguageMode.title%"
       }
     ],
     "keybindings": [
@@ -37,7 +37,7 @@
         "focusMode.defaultLanguageModes": {
           "type": "object",
           "default": {},
-          "description": "每种语言的默认模式。例如：{ \"python\": \"learning\", \"html\": \"productivity\" }",
+          "description": "%config.defaultLanguageModes.description%",
           "additionalProperties": {
             "type": "string",
             "enum": ["learning", "productivity"]
