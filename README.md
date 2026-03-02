@@ -1,3 +1,5 @@
+English | [简体中文](README.zh-CN.md)
+
 # Focus Mode
 
 A VS Code extension for students and developers who want to practice coding without AI assistance — and switch back to full autocomplete with a single keystroke.
