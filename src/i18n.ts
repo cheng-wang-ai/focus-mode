@@ -20,6 +20,7 @@ export interface I18nStrings {
     followGlobalDescNo: string;
     resetDone: string;           // contains {0} placeholder
     setDone: string;             // contains {0} and {1} placeholders
+    blockedToast: string;
 }
 
 /** Replace `{0}`, `{1}`, … placeholders in a string. */
@@ -48,6 +49,7 @@ const strings: Record<string, I18nStrings> = {
         followGlobalDescNo: '(currently following global)',
         resetDone: '{0}: reverted to global mode',
         setDone: '{0}: set to {1}',
+        blockedToast: '🎓 Learning Mode is active — autocomplete is disabled',
     },
     zh: {
         learningLabel: '🎓 学习模式',
@@ -69,6 +71,7 @@ const strings: Record<string, I18nStrings> = {
         followGlobalDescNo: '（当前已跟随全局）',
         resetDone: '{0}：已恢复为全局模式',
         setDone: '{0}：已设置为{1}',
+        blockedToast: '🎓 学习模式已开启 — 自动补全已关闭',
     },
     ja: {
         learningLabel: '🎓 学習モード',
@@ -90,6 +93,7 @@ const strings: Record<string, I18nStrings> = {
         followGlobalDescNo: '（現在グローバルに従っています）',
         resetDone: '{0}：グローバルモードに戻しました',
         setDone: '{0}：{1} に設定しました',
+        blockedToast: '🎓 学習モードが有効です — 自動補完は無効になっています',
     },
     ko: {
         learningLabel: '🎓 학습 모드',
@@ -111,6 +115,7 @@ const strings: Record<string, I18nStrings> = {
         followGlobalDescNo: '(현재 전역을 따르고 있음)',
         resetDone: '{0}: 전역 모드로 복원되었습니다',
         setDone: '{0}: {1}(으)로 설정되었습니다',
+        blockedToast: '🎓 학습 모드가 활성화되어 있습니다 — 자동 완성이 비활성화되었습니다',
     },
     fr: {
         learningLabel: '🎓 Mode Apprentissage',
@@ -132,6 +137,7 @@ const strings: Record<string, I18nStrings> = {
         followGlobalDescNo: '(suit actuellement le mode global)',
         resetDone: '{0} : rétabli au mode global',
         setDone: '{0} : défini sur {1}',
+        blockedToast: '🎓 Mode Apprentissage actif — la saisie semi-automatique est désactivée',
     },
     de: {
         learningLabel: '🎓 Lernmodus',
@@ -153,6 +159,7 @@ const strings: Record<string, I18nStrings> = {
         followGlobalDescNo: '(folgt derzeit dem globalen Modus)',
         resetDone: '{0}: Globaler Modus wiederhergestellt',
         setDone: '{0}: auf {1} gesetzt',
+        blockedToast: '🎓 Lernmodus ist aktiv — Autovervollständigung ist deaktiviert',
     },
     es: {
         learningLabel: '🎓 Modo Aprendizaje',
@@ -174,6 +181,7 @@ const strings: Record<string, I18nStrings> = {
         followGlobalDescNo: '(siguiendo el modo global actualmente)',
         resetDone: '{0}: restablecido al modo global',
         setDone: '{0}: establecido en {1}',
+        blockedToast: '🎓 Modo Aprendizaje activo — el autocompletar está desactivado',
     },
     pt: {
         learningLabel: '🎓 Modo Aprendizado',
@@ -195,6 +203,7 @@ const strings: Record<string, I18nStrings> = {
         followGlobalDescNo: '(seguindo o modo global atualmente)',
         resetDone: '{0}: revertido ao modo global',
         setDone: '{0}: definido como {1}',
+        blockedToast: '🎓 Modo Aprendizado ativo — preenchimento automático está desativado',
     },
     ru: {
         learningLabel: '🎓 Режим обучения',
@@ -216,6 +225,7 @@ const strings: Record<string, I18nStrings> = {
         followGlobalDescNo: '(в данный момент следует глобальному)',
         resetDone: '{0}: возвращено в глобальный режим',
         setDone: '{0}: установлено на {1}',
+        blockedToast: '🎓 Режим обучения активен — автодополнение отключено',
     },
 };
 

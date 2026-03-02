@@ -5,6 +5,7 @@ import { getStrings, fmt } from './i18n';
 
 let statusBarItem: vscode.StatusBarItem;
 let modeManager: ModeManager;
+let lastToastTime = 0;
 
 function updateStatusBar(): void {
     const s = getStrings();
@@ -13,7 +14,10 @@ function updateStatusBar(): void {
     const effectiveMode = modeManager.getEffectiveMode(languageId);
     const hasOverride = !!languageId && modeManager.getLanguageModes()[languageId] !== undefined;
 
-    if (effectiveMode === 'learning') {
+    const isLearning = effectiveMode === 'learning';
+    vscode.commands.executeCommand('setContext', 'focusMode.isLearning', isLearning);
+
+    if (isLearning) {
         statusBarItem.text = hasOverride ? `${s.learningShort} [${languageId}]` : s.learningLabel;
         statusBarItem.tooltip = s.learningTooltip;
     } else {
@@ -96,6 +100,16 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
             }
 
             updateStatusBar();
+        })
+    );
+
+    // Show a toast when the user tries to trigger autocomplete in learning mode.
+    context.subscriptions.push(
+        vscode.commands.registerCommand('focus-mode.notifyBlocked', () => {
+            const now = Date.now();
+            if (now - lastToastTime < 2000) { return; }
+            lastToastTime = now;
+            vscode.window.showInformationMessage(getStrings().blockedToast);
         })
     );
 

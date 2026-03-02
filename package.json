@@ -29,6 +29,16 @@
         "command": "focus-mode.toggleMode",
         "key": "ctrl+shift+f",
         "mac": "cmd+shift+f"
+      },
+      {
+        "command": "focus-mode.notifyBlocked",
+        "key": "ctrl+space",
+        "when": "focusMode.isLearning && editorTextFocus"
+      },
+      {
+        "command": "focus-mode.notifyBlocked",
+        "key": "tab",
+        "when": "focusMode.isLearning && editorTextFocus && (suggestWidgetVisible || inlineSuggestionVisible)"
       }
     ],
     "configuration": {
